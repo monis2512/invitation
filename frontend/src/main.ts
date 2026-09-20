@@ -21,7 +21,7 @@ template:`
    @if(error){<p class="error">{{error}}</p>}<button class="link" (click)="page='home'">← Back to invitation</button>
   </div>
  } @else {
-  <div class="admin-head"><div><span class="eyebrow">PRIVATE SPACE</span><h1>Shailla's Responses ❤️</h1></div><button class="small" (click)="logout()">Logout</button></div>
+  <div class="admin-head"><div><span class="eyebrow">PRIVATE SPACE</span><h1>Pui pui's Responses ❤️</h1></div><button class="small" (click)="logout()">Logout</button></div>
   <div class="stats"><div><b>{{responses.length}}</b><span>Total</span></div><div><b>{{yesCount}}</b><span>Yes</span></div><div><b>{{maybeCount}}</b><span>Maybe</span></div></div>
   @for(r of responses;track r.id){
    <article class="response"><div class="response-top"><strong>{{r.answer==='YES'?'YES ❤️':'MAYBE 😏'}}</strong><button class="delete" (click)="remove(r.id)">Delete</button></div>
@@ -34,7 +34,7 @@ template:`
 <main class="page"><section class="card">
 <div class="sparkles">✦ ✧ ✦</div><div class="heart">♥</div>
 @if(!submitted){
-<span class="eyebrow">A VERY IMPORTANT QUESTION</span><h1>Shailla, would you go on a date with me? 🌙</h1>
+<span class="eyebrow">A VERY IMPORTANT QUESTION</span><h1>Pui Pui, would you go on a date with me? 🌙</h1>
 <p class="intro">No pressure. Just you, me, and maybe a little adventure. ❤️</p>
 <div class="questions"><label>💗 Will you go on a date with me?</label>
 <select [(ngModel)]="answer"><option value="" disabled>Select your answer</option><option value="YES">Yes ❤️</option><option value="MAYBE">Maybe 😏</option><option value="NO" disabled>No</option></select>
@@ -48,7 +48,7 @@ template:`
 <button class="submit" [disabled]="loading||!form.location||!form.time||!form.place" (click)="submit()">{{loading?'Sending...':'Lock in the date ❤️'}}</button>
 </div>}
 </div>
-}@else{<div class="success"><div class="big-heart">💗</div><h2>It's a date, Shailla!</h2><p>Your plans are officially on the calendar.</p><div class="summary"><b>{{form.place}}</b><br>{{form.location}} · {{form.time}}<br>{{form.activity}} · {{form.mood}}</div><p>Now I just have to figure out what to wear. 😄</p></div>}
+}@else{<div class="success"><div class="big-heart">💗</div><h2>It's a date, Pui Pui!</h2><p>Your plans are officially on the calendar.</p><div class="summary"><b>{{form.place}}</b><br>{{form.location}} · {{form.time}}<br>{{form.activity}} · {{form.mood}}</div><p>Now I just have to figure out what to wear. 😄</p></div>}
 @if(error){<p class="error">{{error}}</p>}
 </section></main>}
 `,
