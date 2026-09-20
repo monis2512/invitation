@@ -55,7 +55,8 @@ template:`
 })
 export class AppComponent{
 private http=inject(HttpClient);
-page:'home'|'admin'='home';loggedIn=false;loading=false;submitted=false;error='';answer='';
+page:'home'|'admin'=window.location.pathname.startsWith('/admin')?'admin':'home';
+loggedIn=false;loading=false;submitted=false;error='';answer='';
 login={username:'',password:''};responses:any[]=[];
 form={location:'',time:'',place:'',activity:'',mood:'',message:''};
 get yesCount(){return this.responses.filter(x=>x.answer==='YES').length}
