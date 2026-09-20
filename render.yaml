@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: shailla-date
+    name: plan-date
     runtime: docker
     plan: free
     repo: https://github.com/monis2512/invitation
@@ -10,27 +10,27 @@ services:
     envVars:
       - key: DB_HOST
         fromDatabase:
-          name: shailla-date-db
+          name: plan-date-db
           property: host
 
       - key: DB_PORT
         fromDatabase:
-          name: shailla-date-db
+          name: plan-date-db
           property: port
 
       - key: DB_NAME
         fromDatabase:
-          name: shailla-date-db
+          name: plan-date-db
           property: database
 
       - key: DB_USER
         fromDatabase:
-          name: shailla-date-db
+          name: plan-date-db
           property: user
 
       - key: DB_PASSWORD
         fromDatabase:
-          name: shailla-date-db
+          name: plan-date-db
           property: password
 
       - key: ADMIN_USERNAME
@@ -46,5 +46,5 @@ services:
         value: "lax"
 
 databases:
-  - name: shailla-date-db
+  - name: plan-date-db
     plan: free
