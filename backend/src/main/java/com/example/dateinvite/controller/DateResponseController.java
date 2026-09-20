@@ -32,7 +32,9 @@ public class DateResponseController {
     @GetMapping("/admin/responses")
     public ResponseEntity<?> all(HttpSession session){
         if(!AuthController.authenticated(session)) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        return ResponseEntity.ok(repository.findAll().reversed());
+        List<DateResponse> responses = repository.findAll();
+Collections.reverse(responses);
+return ResponseEntity.ok(responses);
     }
 
     @DeleteMapping("/admin/responses/{id}")
