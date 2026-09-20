@@ -1,38 +1,38 @@
-import com.example.dateinvite.repository.AdminUserRepository;
-import jakarta.servlet.http.HttpSession;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.*;
-import java.util.Map;
+package com.example.dateinvite.model;
 
-@RestController
-@RequestMapping("/api/admin")
-public class AuthController {
-    private final AdminUserRepository repo;
-    private final BCryptPasswordEncoder encoder;
+import jakarta.persistence.*;
 
-    public AuthController(AdminUserRepository repo, BCryptPasswordEncoder encoder) {
-        this.repo=repo; this.encoder=encoder;
+@Entity
+@Table(name = "admin_users")
+public class AdminUser {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    @Column(nullable = false)
+    private String passwordHash;
+
+    public Long getId() {
+        return id;
     }
 
-    @PostMapping("/login")
-    public Map<String,Object> login(@RequestBody Map<String,String> body, HttpSession session) {
-        String username=body.getOrDefault("username","");
-        String password=body.getOrDefault("password","");
-        var user=repo.findByUsername(username);
-        if(user.isPresent() && encoder.matches(password,user.get().getPasswordHash())) {
-            session.setAttribute("ADMIN_AUTH", true);
-            return Map.of("authenticated", true);
-        }
-        return Map.of("authenticated", false);
+    public String getUsername() {
+        return username;
     }
 
-    @PostMapping("/logout")
-    public Map<String,Object> logout(HttpSession session) {
-        session.invalidate();
-        return Map.of("success", true);
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public static boolean authenticated(HttpSession session) {
-        return Boolean.TRUE.equals(session.getAttribute("ADMIN_AUTH"));
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 }
